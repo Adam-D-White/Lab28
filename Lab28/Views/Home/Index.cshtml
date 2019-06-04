@@ -1,0 +1,63 @@
+﻿<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+
+    var newDeck
+    var cards
+
+    function NewD() {
+        $.ajax({
+
+
+            method: "Get",
+            dataType: "json",
+            url: "https://deckofcardsapi.com/api/deck/new/",
+            success: function (result) {
+                console.log(result);
+                newDeck = result.deck_id;
+            },
+
+
+
+        });
+    }
+
+
+    function Draw(newDeck) {
+        $.ajax({
+
+
+            method: "Get",
+            dataType: "json",
+            url: "https://deckofcardsapi.com/api/deck/" + newDeck + "/draw/?count=5",
+            success: function (result1) {
+                console.log(result1);
+                cards = result1;
+            },
+
+            
+
+        });
+
+    }
+
+
+    function Display5(cards) {
+
+        for (card in cards) {
+
+            /*var displayCard = document.getElementById("Card" + i)*/;
+
+        }
+
+
+    }
+
+</script>
+
+<button onclick="NewD()">New Deck</button><br />
+<button onclick="Draw(newDeck)">Draw Cards</button><br />
+
